@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Page</title>
+</head>
+<body>
+    <h1>Welcome to the Protected Page</h1>
+    <p>You successfully logged in with Okta!</p>
+
+    <script>
+        const oktaAuth = new OktaAuth({
+            issuer: 'dev-ap8jdoc17p5j43jc.us.auth0.com',
+            clientId: 'T1QrAazxtZlFhmsFGNzawdVvs2gsIr7W',
+        });
+
+        // Verify the user is logged in
+        oktaAuth.tokenManager.get('idToken').then(token => {
+            if (!token) {
+                alert('You must log in to access this page.');
+                window.location.href = '/';
+            }
+        }).catch(err => {
+            console.error('Authentication error:', err);
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>

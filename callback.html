@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth0 Callback</title>
+</head>
+<body>
+  <script>
+    async function handleAuthCallback() {
+      const auth0 = await createAuth0Client({
+        domain: 'dev-ap8jdoc17p5j43jc.us.auth0.com', // Replace with your Auth0 domain
+        client_id: 'T1QrAazxtZlFhmsFGNzawdVvs2gsIr7W', // Replace with your Auth0 client ID
+      });
+
+      // Handle the redirect and obtain tokens
+      await auth0.handleRedirectCallback();
+
+      // Redirect to Eaglercraft
+      window.location.href = '/index.html'; // Adjust as necessary
+    }
+
+    handleAuthCallback();
+  </script>
+</body>
+</html>
+
